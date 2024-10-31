@@ -6,6 +6,7 @@ from ..courses.views import CourseViewSet
 from ..grades.views import GradeViewSet
 from ..students.views import StudentViewSet
 from ..teachers.views import TeacherViewSet
+from ..schedules.views import ScheduleViewSet
 
 router = DefaultRouter()
 
@@ -14,6 +15,7 @@ router.register(r'courses', CourseViewSet, basename='course')
 router.register(r'grades', GradeViewSet, basename='grade')
 router.register(r'students', StudentViewSet, basename='student')
 router.register(r'teachers', TeacherViewSet, basename='teacher')
+router.register(r'schedule', ScheduleViewSet, basename='schedule')
 
 urlpatterns = [
     path('register/', UserRegistrationView.as_view(), name='usuario'),
