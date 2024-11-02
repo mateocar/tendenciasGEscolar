@@ -24,7 +24,6 @@ class TeacherViewSetTestCase(TestCase):
 
     def test_get_teacher(self):
         response = self.client.get(self.list_url)
-        print(response)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertGreater(len(response.data), 0)
         self.assertEqual(response.data[0]["id"], self.teacher.id)

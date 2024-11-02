@@ -7,6 +7,8 @@ from rest_framework.views import APIView
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.permissions import IsAuthenticated
 from drf_yasg.utils import swagger_auto_schema
+from django.conf import settings
+from django.core.mail import send_mail
 
 class UserRegistrationView(APIView):
     @swagger_auto_schema(
@@ -21,6 +23,12 @@ class UserRegistrationView(APIView):
                 'email': serializer.data['email'],
                 'username': serializer.data['username'],
             }
+            asunto = "Bienvenido a la plataforma"
+            mensaje_email = f"Hola {serializer.data['full_name']}, bienvenido a nuestra plataforma."
+            email_destino = [serializer.data['email']]
+            email_origen = settings.EMAIL_HOST_USER
+            send_mail(asunto, mensaje_email, email_origen, email_destino)
+            
             return Response(response_data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
