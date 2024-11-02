@@ -1,0 +1,15 @@
+{
+  "builds": [
+    {
+      "src": "gestionescolar_back/wsgi.py",
+      "use": "@vercel/python",
+      "config": { "maxLambdaSize": "15mb", "runtime": "python3.12.5" }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "gestionescolar_back/wsgi.py"
+    }
+  ]
+}
