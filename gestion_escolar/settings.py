@@ -51,7 +51,6 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'drf_yasg',
     
-    'corsheaders',
     
     'app.courses',
     'app.grades',
@@ -66,7 +65,6 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -74,8 +72,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     
 ]
-
-CORS_ALLOWED_ORIGINS = ["http://gestion-escolar-front.vercel.app", "https://gestion-escolar-front.vercel.app", "http://127.0.0.1",]
 
 ROOT_URLCONF = 'gestion_escolar.urls'
 
