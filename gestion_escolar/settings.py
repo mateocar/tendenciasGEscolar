@@ -73,7 +73,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
-CORS_ALLOWED_ORIGINS = [".vercel.app"]
+CORS_ALLOWED_ORIGINS = ["https://gestion-escolar-front.vercel.app"]
 
 ROOT_URLCONF = 'gestion_escolar.urls'
 
