@@ -18,8 +18,8 @@ router.register(r'teachers', TeacherViewSet, basename='teacher')
 router.register(r'schedule', ScheduleViewSet, basename='schedule')
 
 urlpatterns = [
-    path('register/', UserRegistrationView.as_view(), name='usuario'),
-    path('login/', UserLoginView.as_view(), name='usuario'),
-    path('checkAuth/', AuthenticatedUserView.as_view(), name='usuario'),
+    path('register/', UserRegistrationView.as_view(), name='usuario-register'),
+    path('login/', UserLoginView.as_view(), name='usuario-login'),
+    path('checkAuth/', AuthenticatedUserView.as_view(), name='checkauth'),
     path('', include((router.urls)))
 ]

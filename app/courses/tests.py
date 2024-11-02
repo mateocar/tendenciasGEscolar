@@ -23,7 +23,10 @@ class CourseViewSetTestCase(TestCase):
             course_name="Fisica",
             description="Curso de 3 semestre",
             teacher_id=self.teacher,
-            schedule="9/03/2024"
+            start_date = "2024-10-01",
+            end_date = "2024-10-30",
+            start_time = "06:00:00",
+            end_time = "08:00:00",
         )
         
         self.list_url = reverse("course-list")
@@ -35,7 +38,10 @@ class CourseViewSetTestCase(TestCase):
         self.assertGreater(len(response.data), 0)
         self.assertEqual(response.data[0]["course_name"], "Fisica")
         self.assertEqual(response.data[0]["description"], "Curso de 3 semestre")
-        self.assertEqual(response.data[0]["schedule"], "9/03/2024")
+        self.assertEqual(response.data[0]["start_date"], "2024-10-01")
+        self.assertEqual(response.data[0]["end_date"], "2024-10-30")
+        self.assertEqual(response.data[0]["start_time"], "06:00:00")
+        self.assertEqual(response.data[0]["end_time"], "08:00:00")
         self.assertEqual(response.data[0]["teacher_id"], self.teacher.id)
 
     def test_create_course(self):
@@ -43,11 +49,12 @@ class CourseViewSetTestCase(TestCase):
             "course_name": "Quimica",
             "description": "hii Quimica!!",
             "teacher_id": self.teacher.id,
-            "schedule": "10/03/2024"
+            "start_date": "2024-10-03"
         }
         response = self.client.post(self.list_url, new_course_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Course.objects.count(), 2)
+        self.assertEqual(response.data['start_date'], "2024-10-03")
         self.assertEqual(Course.objects.get(id=2).course_name, "Quimica") 
 
     def test_update_course(self):
@@ -55,11 +62,12 @@ class CourseViewSetTestCase(TestCase):
             "course_name": "Fisica Avanzada",
             "description": "Curso de 4 semestre",
             "teacher_id": self.teacher.id,
-            "schedule": "11/03/2024"
+            "start_date": "2024-10-03"
         }
         response = self.client.put(self.detail_url, updated_course_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.course.refresh_from_db()
+        self.assertEqual(response.data['start_date'], "2024-10-03")
         self.assertEqual(self.course.course_name, "Fisica Avanzada") 
 
     def test_delete_course(self):
