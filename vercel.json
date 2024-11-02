@@ -12,7 +12,6 @@
       "dest": "gestion_escolar/wsgi.py"
     }
   ],
-  {
   "headers": [
     {
       "source": "/(.*)",
@@ -24,6 +23,4 @@
       ]
     }
   ]
-}
-  
 }
