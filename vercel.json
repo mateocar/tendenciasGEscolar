@@ -9,7 +9,12 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "gestion_escolar/wsgi.py"
+      "dest": "gestion_escolar/wsgi.py",
+      "headers": {
+        "Access-Control-Allow-Origin": "*",  // Configura el origen permitido
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization"
+      }
     }
   ]
 }
